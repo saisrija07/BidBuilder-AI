@@ -148,17 +148,17 @@
             <p>Enterprise RFP Response Architect</p>
         </header>
 
-        <form action="/generate" method="POST">
+        <form action="/generate_proposal" method="POST">
             <div class="form-group">
                 <label for="client_name">Client Name</label>
-                <input type="text" id="client_name" placeholder="e.g. Apollo Healthcare" required>
+                <input type="text" id="client_name" name="client_name" placeholder="e.g. Apollo Healthcare" required>
             </div>
 
             <div class="form-group">
                 <label for="client_industry">Industry</label>
-                <select id="client_industry" required>
+                <select id="client_industry" name="client_industry" required>
                     <option value="" disabled selected>Select Industry</option>
-                    <option value="Fintech">Fintech</option>
+                    <option value="Fintech" selected>Fintech</option>
                     <option value="Healthcare">Healthcare</option>
                     <option value="E-commerce">E-Commerce</option>
                     <option value="Government">Government</option>
@@ -169,12 +169,12 @@
 
             <div class="form-group">
                 <label for="project_goal">Project Goal</label>
-                <textarea id="project_goal" rows="4" placeholder="Describe the core objective" required></textarea>
+                <textarea id="project_goal" name="project_goal" rows="4" placeholder="Describe the core objective" required>PROJECT</textarea>
             </div>
 
             <div class="form-group">
                 <label for="target_audience">Target Audience</label>
-                <select id="target_audience" required>
+                <select id="target_audience" name="target_audience" required>
                     <option value="" disabled selected>Select Target Audience</option>
                     <option value="Internal Staff">Internal Staff</option>
                     <option value="B2B Customers">B2B Customers</option>
@@ -185,17 +185,17 @@
             <div class="date-row">
                 <div class="date-col">
                     <label for="start_date">Start Date</label>
-                    <input type="date" id="start_date" required>
+                    <input type="date" id="start_date" name="start_date" required>
                 </div>
                 <div class="date-col">
                     <label for="end_date">End Date</label>
-                    <input type="date" id="end_date" required>
+                    <input type="date" id="end_date" name="end_date" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="budget_range">Budget Range (in $)</label>
-                <select id="budget_range" required>
+                <select id="budget_range" name="budget_range" required>
                     <option value="" disabled selected>Select Budget Range</option>
                     <option value="Under $50k">Under $50k</option>
                     <option value="$50k - $100k">$50k - $100k</option>
@@ -207,22 +207,20 @@
 
             <div class="form-group">
                 <label for="tech_pref">Tech Stack Preference</label>
-                <input type="text" id="tech_pref" placeholder="e.g. React, Python, AWS" required>
+                <input type="text" id="tech_pref" name="tech_pref" placeholder="e.g. React, Python, AWS" required>
             </div>
 
             <div class="form-group">
                 <label for="tone">Proposal Tone</label>
-                <select id="tone" required>
+                <select id="tone" name="tone" required>
                     <option value="" disabled selected>Select Proposal Tone</option>
                     <option value="Formal & Corporate">Formal & Corporate</option>
                     <option value="Innovative & Bold">Innovative & Bold</option>
                     <option value="Technical & Precise">Technical & Precise</option>
                 </select>
             </div>
-
-            <div>
-                <button type="submit">Generate Proposal</button>
-            </div>
+            
+            <button type="submit">Generate Proposal</button>
 
         </form>
     </div>
