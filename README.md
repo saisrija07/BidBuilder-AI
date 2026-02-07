@@ -19,7 +19,7 @@ graph TD
         Backend -->|Async Call| Agent2[generate_tech_stack]
         Backend -->|Async Call| Agent3[generate_cost_breakdown]
         Backend -->|Async Call| Agent4[generate_risk_matrix]
-        Backend -->|... and 8 more ...| AgentN[...]
+        Backend -->| and 8 more | AgentN[]
     end
     
     Agent1 -->|HTML Fragment| Aggregator(Data Merger)
@@ -67,12 +67,12 @@ BidBuilder/
 
 * [ ] **Build `index.html`:** Create a clean form with the **8 Master Inputs** (see below).
 * [ ] **Validation:** Ensure all fields are required.
-* [ ] **Loading State:** Add a "Generating Proposal..." spinner (since it takes ~10s).
+* [ ] **Loading State:** Add a "Generating Proposal" spinner (since it takes ~10s).
 
 ### Phase 3: The Brains (Prompt Architect)
 
 * [ ] **Setup `prompts.py`:** Initialize the LLM client (OpenAI or Gemini).
-* [ ] **Write `generate_exec_summary`:** Test that it returns valid HTML (`<p>`, `<h2>`).
+* [ ] **Write `generate_exec_summary`:** Test that it returns valid HTML (``, `<h2>`).
 * [ ] **Write `generate_tech_stack`:** Test that it returns a list (`<ul>`, `<li>`).
 * [ ] **Complete all 12 functions:** Ensure they all accept the correct arguments.
 
@@ -98,7 +98,7 @@ These are the variables collected in `index.html` and passed to the backend.
 | --- | --- | --- |
 | `client_name` | Text | e.g., "Apex Healthcare", "City of Austin" |
 | `client_industry` | Dropdown | Fintech, Healthcare, E-commerce, Government, Education |
-| `project_goal` | Text Area | "Migrate legacy portal to cloud...", "Build iOS app..." |
+| `project_goal` | Text Area | "Migrate legacy portal to cloud", "Build iOS app" |
 | `target_audience` | Dropdown | Internal Staff, B2B Customers, General Public |
 | `timeline` | Dropdown | 3 Months, 6 Months, 1 Year, ASAP |
 | `budget_range` | Dropdown | <$50k, $100k-$500k, $1M+, TBD |
@@ -114,59 +114,64 @@ All functions live in `prompts.py`. Each must be `async` and return an **HTML St
 ### 1. The Hook
 
 * **Function:** `async def generate_exec_summary(client_name, goal, industry, tone)`
-* **Output:** `<h2>Executive Summary</h2><p>...</p>`
+* **Output:** `Executive Summary`
+* **Word count:** `200 words`
 
 ### 2. The Credibility
 
 * **Function:** `async def generate_why_us(industry, tone)`
-* **Output:** `<h2>Why Choose Us?</h2><p>...</p>`
+* **Output:** `Why Choose Us?`
+* **Word count:** `200 words`
 
 ### 3. The Tech Strategy
 
 * **Function:** `async def generate_solution_arch(tech_pref, goal)`
-* **Output:** `<h2>Proposed Solution</h2><p>...</p>`
+* **Output:** `Proposed Solution`
+* **Word count:** `200 words`
 
 ### 4. The Deliverables
 
 * **Function:** `async def generate_scope_of_work(goal)`
-* **Output:** `<h2>Scope of Work</h2><ul><li>...</li></ul>`
+* **Output:** `Scope of Work<ul><li>...</li></ul>`
+* **Word count:** `200 words`
 
 ### 5. The Gantt Chart
 
 * **Function:** `async def generate_timeline_table(timeline)`
-* **Output:** `<h2>Project Timeline</h2><table>...</table>` (HTML Table)
+* **Output:** `Project Timeline<table>...</table>`
 
 ### 6. The Staffing
 
 * **Function:** `async def generate_team_structure(budget_range)`
-* **Output:** `<h2>Team Composition</h2><ul><li>...</li></ul>`
+* **Output:** `Team Composition<ul><li>...</li></ul>`
 
 ### 7. The Pricing
 
 * **Function:** `async def generate_cost_breakdown(budget_range)`
-* **Output:** `<h2>Estimated Investment</h2><table>...</table>`
+* **Output:** `Estimated Investment<table>...</table>`
 
 ### 8. The Safety
 
 * **Function:** `async def generate_risk_matrix(industry)`
-* **Output:** `<h2>Risk Management</h2><ul><li>...</li></ul>`
+* **Output:** `Risk Management<ul><li>...</li></ul>`
 
 ### 9. The Testing
 
 * **Function:** `async def generate_qa_plan(target_audience)`
-* **Output:** `<h2>Quality Assurance</h2><p>...</p>`
+* **Output:** `Quality Assurance`
 
 ### 10. The Tools
 
 * **Function:** `async def generate_tech_stack_list(tech_pref)`
-* **Output:** `<h2>Technology Stack</h2><div class="tags">...</div>`
+* **Output:** `Technology Stack<div class="tags">`
 
 ### 11. The Proof
 
 * **Function:** `async def generate_case_study(industry)`
-* **Output:** `<h2>Relevant Case Study</h2><div class="box">...</div>`
+* **Output:** `Relevant Case Study`
 
 ### 12. The Closing
 
 * **Function:** `async def generate_next_steps(tone)`
-* **Output:** `<h2>Next Steps</h2><p>...</p>`
+* **Output:** `Next Steps`
+* **Word count:** `200 words`
