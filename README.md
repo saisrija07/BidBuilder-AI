@@ -6,7 +6,7 @@ Instead of a generic chatbot, BidBuilder uses a **Hub-and-Spoke Architecture**. 
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 The core of this project is **Parallel Execution**. We do not chain prompts (A -> B -> C). We fire them all at once (A + B + C) to reduce generation time from minutes to seconds.
 
@@ -34,7 +34,7 @@ graph TD
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 BidBuilder/
@@ -55,7 +55,7 @@ BidBuilder/
 
 ---
 
-## ✅ Development Checklist
+## Development Checklist
 
 ### Phase 1: The Foundation
 
@@ -90,7 +90,7 @@ BidBuilder/
 
 ---
 
-## 🔑 The 8 Master Inputs (The Hub)
+## The 8 Master Inputs (The Hub)
 
 These are the variables collected in `index.html` and passed to the backend.
 
@@ -107,7 +107,7 @@ These are the variables collected in `index.html` and passed to the backend.
 
 ---
 
-## 🧠 The 12 Functions (The Spokes)
+## The 12 Functions (The Spokes)
 
 All functions live in `prompts.py`. Each must be `async` and return an **HTML String**.
 
