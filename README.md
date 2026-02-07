@@ -10,7 +10,7 @@ Instead of a generic chatbot, BidBuilder uses a **Hub-and-Spoke Architecture**. 
 
 The core of this project is **Parallel Execution**. We do not chain prompts (A -> B -> C). We fire them all at once (A + B + C) to reduce generation time from minutes to seconds.
 
-```mermaid
+```
 graph TD
     User[User Input Form] -->|8 Key Variables| Backend(Flask/FastAPI Async Engine)
     
