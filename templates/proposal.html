@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f0f2f5;
+            color: #334155;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        /* --- Document Container (The "Paper") --- */
+        .proposal-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden; 
+        }
+
+        /* --- Header Section --- */
+        header {
+            background-color: #1e293b; /* Dark Slate Blue */
+            color: #ffffff;
+            padding: 40px 50px;
+            border-bottom: 4px solid #3b82f6; /* Accent Blue */
+        }
+
+        header h1 {
+            margin: 0 0 20px 0;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        header h2 {
+            color: #93c5fd; 
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 16px;
+            color: #e2e8f0;
+        }
+
+        /* --- Main Content Layout --- */
+        .content-body {
+            padding: 50px;
+        }
+
+        h2 {
+            color: #1e293b;
+            font-size: 22px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #334155;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* --- Tables --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        thead { background-color: #f8fafc; }
+
+        th {
+            text-align: left;
+            padding: 12px 15px;
+            color: #475569;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) { background-color: #fcfcfc; }
+
+        /* --- Lists --- */
+        ul { margin-bottom: 30px; padding-left: 20px; }
+        ul li { margin-bottom: 8px; }
+
+        /* --- Footer & Buttons --- */
+        footer {
+            background-color: #f8fafc;
+            padding: 40px 50px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 16px;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between buttons */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: #2563eb; /* Blue */
+            color: white;
+        }
+        .btn-primary:hover { background-color: #1d4ed8; }
+
+        .btn-secondary {
+            background-color: #64748b; /* Slate Gray */
+            color: white;
+        }
+        .btn-secondary:hover { background-color: #475569; }
+
+        /* --- Print Optimization --- */
+        @media print {
+            body { background: white; padding: 0; }
+            .proposal-container { box-shadow: none; max-width: 100%; border: none; margin: 0; }
+            
+            /* HIDE BUTTONS WHEN PRINTING */
+            .button-group, .btn, footer h2 { display: none !important; }
+            
+            header { color: black; background: white; border-bottom: 2px solid black; padding: 20px 0; }
+            header h1 { color: black; }
+            header section { border-left: 4px solid black; color: black; background: none; padding: 0 0 0 15px; }
+            header p, header h2 { color: black; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="proposal-container">
+        
+        <header>
+            <h1>Project Proposal: {{ data.metadata.input.client_name }}</h1>
+            <section>
+                <h2>Executive Summary</h2>
+                <p>{{ data.context.executive_summary }}</p>
+            </section>
+        </header>
+
+        <div class="content-body">
+
+            <section>
+                <h2>Why Partner With Us?</h2>
+                <p>{{ data.context.why_us }}</p>
+
+                <h3>Proposed Solution</h3>
+                <p>{{ data.context.proposed_solution }}</p>
+            </section>
+
+            <section>
+                <h2>Scope of Work</h2>
+                <ul>
+                    {% for item in data.context.scope_of_work %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section>
+                <h2>Project Timeline</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Phase</th>
+                            <th style="width: 20%;">Duration</th>
+                            <th>Deliverable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for step in data.context.project_timeline %}
+                        <tr>
+                            <td>{{ step.phase }}</td>
+                            <td>{{ step.duration }}</td>
+                            <td>{{ step.deliverable }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Team Structure</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Count</th>
+                            <th>Focus Area</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in data.context.team_structure %}
+                        <tr>
+                            <td>{{ member.role }}</td>
+                            <td>{{ member.count }}</td>
+                            <td>{{ member.focus }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Technology Stack</h2>
+                <ul>
+                    {% for tech in data.context.tech_stack %}
+                    <li>{{ tech }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section>
+                <h2>Investment Breakdown</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Cost (USD)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data.context.cost_breakdown %}
+                        <tr>
+                            <td>{{ item.category }}</td>
+                            <td>${{ item.cost }}</td>
+                            <td>{{ item.notes }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Risk Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risk</th>
+                            <th>Impact</th>
+                            <th>Mitigation Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for risk in data.context.risk_management %}
+                        <tr>
+                            <td>{{ risk.risk }}</td>
+                            <td>{{ risk.impact }}</td>
+                            <td>{{ risk.mitigation }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Quality Assurance Plan</h2>
+                <ul>
+                    {% for qa in data.context.quality_assurance %}
+                    <li>{{ qa }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section>
+                <h2>Case Study: {{ data.context.case_study.title }}</h2>
+                <div style="background-color: #f8fafc; padding: 20px; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <p style="margin-top: 0;"><strong>Challenge:</strong> {{ data.context.case_study.challenge }}</p>
+                    <p style="margin-bottom: 0;"><strong>Outcome:</strong> {{ data.context.case_study.outcome }}</p>
+                </div>
+            </section>
+
+        </div>
+
+        <footer>
+            <h2>Next Steps</h2>
+            <p>{{ data.context.next_steps }}</p>
+            <br>
+            
+            <div class="button-group">
+                <button onclick="window.print()" class="btn btn-secondary">Print</button>
+                
+                <a href="/" class="btn btn-primary">Create Another Proposal</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
