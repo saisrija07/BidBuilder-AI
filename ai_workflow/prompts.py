@@ -36,7 +36,7 @@ def generate_exec_summary_prompt(params_dict):
     OUTPUT FORMAT (STRICT JSON ONLY):
     You must return a valid JSON object. Do not include markdown formatting (like ```json). and you should also set word limit upto maximum 200 words
     {{
-        "summary": "The full executive summary text (2-3 paragraphs)."
+        "executive_summary": "The full executive summary text (2-3 paragraphs)."
     }}
     """
     return prompt
@@ -67,7 +67,7 @@ def generate_why_us_prompt(params_dict):
     OUTPUT FORMAT (STRICT JSON ONLY):
     You must return a valid JSON object but with a single key. Do not include markdown formatting (like ```json). it should be in one paragraph explaining why to choose us. and limit the word count upto maximum 200.
     {{
-        "title": "A persuasive header (e.g., 'Why We Are The Right Partner')"
+        "why_us": "A persuasive header (e.g., 'Why We Are The Right Partner')"
     }}
     """
     return prompt
@@ -96,7 +96,7 @@ def generate_solution_arch_prompt(params_dict):
         
         Example:
         {{
-            "solution_architecture": "To achieve the goal of {project_goal}, we propose a microservices architecture using..."
+            "proposed_solution": "To achieve the goal of {project_goal}, we propose a microservices architecture using..."
         }}
         """
     return prompt
@@ -129,11 +129,11 @@ def generate_scope_of_work_prompt(params_dict):
     
     Example:
     {{
-        "scope_of_work" :[
-        "Phase 1: Planning & Design (e.g., Wireframes, SRS Document)",
-        "Phase 2: Development (e.g., Source Code, API Integration)",
-        "Phase 3: Quality Assurance (e.g., Test Plans, UAT Sign-off)",
-        "Phase 4: Deployment (e.g., Cloud Setup, User Manuals, Training)"
+        "scope_of_work": [
+            "Phase 1: Planning & Design (e.g., Wireframes, SRS Document)",
+            "Phase 2: Development (e.g., Source Code, API Integration)",
+            "Phase 3: Quality Assurance (e.g., Test Plans, UAT Sign-off)",
+            "Phase 4: Deployment (e.g., Cloud Setup, User Manuals, Training)"
         ]
     }}
     """
@@ -166,7 +166,7 @@ def generate_timeline_table_prompt(params_dict):
 
     Example:
     {{
-        "timeline_table": [
+        "project_timeline": [
             {{
                 "phase": "Phase 1: Discovery",
                 "duration": "Week 1-2",
@@ -406,7 +406,6 @@ def generate_case_study_prompt(params_dict):
        - If Industry is 'Retail': Title it something like "Boosting E-commerce Conversion for [Brand]".
     2. Define the "Challenge" clearly (e.g., "Legacy systems were slow").
     3. Define the "Outcome" with metrics (e.g., "30% faster load times", "2x revenue").
-    4. define the "next_steps" clearly.
 
     OUTPUT FORMAT (STRICT JSON ONLY):
     Return a valid JSON object with a single key: "case_study".
@@ -418,7 +417,6 @@ def generate_case_study_prompt(params_dict):
             "title": "Scaling NeoBank to 1M Users",
             "challenge": "Legacy on-premise servers were crashing during payday traffic spikes, causing 40% user churn.",
             "outcome": "We migrated them to AWS Serverless architecture, resulting in 99.99% uptime during peak loads and a 40% reduction in operational infrastructure costs."
-            "next_steps": "give here the next step for this case study"
         }}
     }}
     """
