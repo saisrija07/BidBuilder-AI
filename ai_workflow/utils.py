@@ -22,7 +22,7 @@ from ai_workflow.prompts import (
 )
 
 MODEL = "openai/gpt-oss-20b"
-MAX_RETRIES = 3
+MAX_RETRIES = 10
 
 load_dotenv()
 
@@ -39,7 +39,7 @@ params_dict = {
     "tone": "formal"
 }
 
-async def call_ai_model(prompt):
+async def call_ai_model(prompt, req_key=None):
     try:
         for i in range(MAX_RETRIES):
             try:
@@ -52,6 +52,8 @@ async def call_ai_model(prompt):
                 )
                 usage = response.usage
                 message_content = json.loads(response.choices[0].message.content)
+                if req_key and req_key not in message_content:
+                    raise ValueError(f"Response JSON does not contain required key: {req_key}")
                 return {
                     "response": message_content,
                     "tokens": {
@@ -68,53 +70,53 @@ async def call_ai_model(prompt):
     except Exception as e:
         return {}
 
-async def generate_executive_summary(params_dict):
+async def generate_executive_summary(params_dict, req_key="executive_summary"):
     prompt = generate_exec_summary_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_why_us(params_dict):
+async def generate_why_us(params_dict, req_key="why_us"):
     prompt = generate_why_us_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_solution_arch(params_dict):
+async def generate_solution_arch(params_dict, req_key="proposed_solution"):
     prompt = generate_solution_arch_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_scope_of_work(params_dict):
+async def generate_scope_of_work(params_dict, req_key="scope_of_work"):
     prompt = generate_scope_of_work_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_timeline_table(params_dict):
+async def generate_timeline_table(params_dict, req_key="project_timeline"):
     prompt = generate_timeline_table_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_team_structure(params_dict):
+async def generate_team_structure(params_dict, req_key="team_structure"):
     prompt = generate_team_structure_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_cost_breakdown(params_dict):
+async def generate_cost_breakdown(params_dict, req_key="cost_breakdown"):
     prompt = generate_cost_breakdown_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_risk_matrix(params_dict):
+async def generate_risk_matrix(params_dict, req_key="risk_management"):
     prompt = generate_risk_matrix_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_qa_plan(params_dict):
+async def generate_qa_plan(params_dict, req_key="quality_assurance"):
     prompt = generate_qa_plan_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_tech_stack_list(params_dict):
+async def generate_tech_stack_list(params_dict, req_key="tech_stack"):
     prompt = generate_tech_stack_list_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_case_study(params_dict):
+async def generate_case_study(params_dict, req_key="case_study"):
     prompt = generate_case_study_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
-async def generate_next_steps(params_dict):
+async def generate_next_steps(params_dict, req_key="next_steps"):
     prompt = generate_next_steps_prompt(params_dict)
-    return await call_ai_model(prompt)
+    return await call_ai_model(prompt, req_key=req_key)
 
 async def generate_proposal_context(params_dict):
     context = {}
@@ -187,4 +189,5 @@ async def main():
 if __name__ == "__main__":
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    asyncio.run(main())
+    context = asyncio.run(generate_proposal_context(params_dict))
+    print(context)
