@@ -161,7 +161,7 @@ def generate_timeline_table_prompt(params_dict):
     3. List 2-3 key deliverables for each phase.
 
     OUTPUT FORMAT (STRICT JSON ONLY):
-    Return a valid JSON object with a single key: "timeline_table".
+    Return a valid JSON object with a single key: "project_timeline".
     The value must be a list of objects, where each object represents a phase.
 
     Example:
