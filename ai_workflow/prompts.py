@@ -34,7 +34,7 @@ def generate_exec_summary_prompt(params_dict):
     5. Don't make any grammmatic mistake behave like you are the english literature professor with 15+ years of experience and also a great enterprener who has great knowledge about starting a new business.
 
     OUTPUT FORMAT (STRICT JSON ONLY):
-    You must return a valid JSON object. Do not include markdown formatting (like ```json). and you should also set word limit upto maximum 200 words
+    You must return a valid JSON object. Do not include markdown formatting (like ```json). and you should also set word limit upto maximum 80 words
     {{
         "executive_summary": "The full executive summary text (2-3 paragraphs)."
     }}
@@ -91,7 +91,7 @@ def generate_solution_arch_prompt(params_dict):
         4. Mention the database and deployment strategy (e.g., AWS/Docker).
 
         OUTPUT FORMAT (STRICT JSON ONLY):
-        Return a valid JSON object with a single key: "solution_architecture".
+        Return a valid JSON object with a single key: "proposed_solution".
         Do not use markdown formatting.
         
         Example:
