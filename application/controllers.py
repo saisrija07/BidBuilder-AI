@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
 from application import app
 import json
+import asyncio
+from ai_workflow.utils import generate_proposal_context
+import time
+asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 @app.route('/')
 def home():
@@ -19,9 +23,8 @@ def generate_proposal():
             'tech_pref': request.form['tech_pref'],
             'tone': request.form['tone'],
         }
-        
-        with open('sample_output.json') as f:
-            context = f.read()
-            context = json.loads(context)
 
+        context = asyncio.run(generate_proposal_context(data))
+        with open(f"output/{time.time()}.json", 'w') as f:
+            json.dump(context, f, indent=4)
         return render_template('proposal.html', data = context)
