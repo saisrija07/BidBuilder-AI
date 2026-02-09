@@ -1,4 +1,4 @@
-```markdown
+
 # BidBuilder AI 🚀
 
 **The High-Performance Automated RFP Response Architect.**
