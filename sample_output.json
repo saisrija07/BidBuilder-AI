@@ -1,12 +1,18 @@
 {
   "metadata": {
     "generated_at": "2026-02-08T14:45:00Z",
-    "client_name": "Apex Financial Services",
-    "project_goal": "Migrate Legacy Portal to Cloud Native Mobile App",
-    "budget_range": "$100k - $500k",
-    "timeline_request": "6 Months"
+    "input": {
+        "client_name": "Deloitte",
+        "client_industry": "IT",
+        "project_goal": "Integrate AI into our workflow",
+        "target_audience": "Developers",
+        "timeline": "3 months",
+        "budget_range": "$10000",
+        "tech_pref": ["pytorch", "automation tools"],
+        "tone": "formal"
+    }
   },
-  "content": {
+  "context": {
     "executive_summary": "Apex Financial Services is poised to redefine its digital presence. We propose a comprehensive migration of your legacy web portal into a high-performance, secure mobile application. This initiative will not only modernize your customer interface but also ensure compliance with evolving financial regulations, ultimately driving a projected 40% increase in user engagement.",
     
     "why_us": "Our agency specializes in high-stakes Fintech modernization. Unlike generalist firms, we have a dedicated Compliance Engineering team that understands SOC2 and PCI-DSS requirements. We don't just build apps; we build secure financial ecosystems.",
