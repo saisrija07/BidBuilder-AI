@@ -21,9 +21,6 @@
 
 The core of this project is **Parallel Execution**. We do not chain prompts (A -> B -> C). We fire them all at once (A + B + C).
 
-![System Architecture Diagram](static/images/architecture_diagram.png)
-*(Note: Add a screenshot or diagram image to your `static/images` folder)*
-
 ### The Workflow:
 1.  **User Input:** The user fills out the "Hub" (Client Name, Industry, Budget, etc.).
 2.  **Async Dispatch:** The Flask backend initializes the `asyncio` event loop.
@@ -167,39 +164,3 @@ MAX_RETRIES = 5
 5. Open a Pull Request
 
 ---
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-```
-
----
-
-### LinkedIn Post (Bonus)
-
-**Headline:** I built an AI that writes 12-page project proposals in 15 seconds. 🚀
-
-We’ve all been there: The deadline is approaching, and you’re staring at a blank RFP response. It’s tedious, repetitive, and kills productivity.
-
-So this weekend, I built **BidBuilder AI**.
-
-It’s not just a wrapper around ChatGPT. It’s an enterprise-grade orchestration engine.
-
-**How it works:**
-1.  **The Hub:** You input the client details, industry, tech stack, and budget.
-2.  **The Spokes:** The backend triggers **12 specialized AI agents** simultaneously.
-3.  **The Magic:** Instead of writing one section at a time, Agent A writes the Tech Stack while Agent B calculates the Cost Breakdown and Agent C builds the Gantt Chart.
-
-**The Tech Stack:**
-* **Backend:** Flask + Python AsyncIO
-* **AI:** Groq (Llama-3) for insane inference speed
-* **Architecture:** Parallel execution (cut generation time by 75%)
-
-The result? A fully formatted, print-ready proposal with strategy, timelines, and risk matrices—generated faster than you can open a new Google Doc.
-
-Check out the code on GitHub! [Link to your repo]
-
-#AI #Python #Flask #Automation #Productivity #Groq #SoftwareEngineering
-
-```
