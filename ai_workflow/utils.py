@@ -22,7 +22,7 @@ from ai_workflow.prompts import (
 )
 
 MODEL = "openai/gpt-oss-20b"
-MAX_RETRIES = 2
+MAX_RETRIES = 5
 
 load_dotenv()
 
@@ -64,7 +64,7 @@ async def call_ai_model(prompt, req_key=None):
                 }
             except Exception as e:
                 if i < MAX_RETRIES - 1:
-                    await asyncio.sleep(i+1)
+                    await asyncio.sleep(2 * i + 1)
                 else:
                     raise Exception("Max retries reached.")
     except Exception as e:
@@ -190,4 +190,3 @@ if __name__ == "__main__":
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     context = asyncio.run(generate_proposal_context(params_dict))
-    print(context)
