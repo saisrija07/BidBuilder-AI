@@ -1,15 +1,13 @@
 Here is a professional, developer-ready `README.md` based on the code you provided. It highlights the architecture, the async capabilities, and provides clear setup instructions.
 
 ```markdown
-# BidBuilder AI 🚀
+BidBuilder AI 🚀
 
 **The High-Performance Automated RFP Response Architect.**
 
 BidBuilder AI is a full-stack application that generates comprehensive, enterprise-grade business proposals in seconds. Unlike standard chatbots that generate text sequentially, BidBuilder utilizes a **Parallel Agent Architecture** to orchestrate 12 specialized AI agents simultaneously, reducing document generation time by over 70%.
 
----
-
-## ⚡ Key Features
+Key Features
 
 * **Parallel Orchestration:** Uses Python's `asyncio` to fire 12 independent AI prompts at once, cutting generation time from ~60s to ~15s.
 * **Structured Output:** Generates a complete 12-section document including Executive Summaries, Gantt Charts, Cost Breakdowns, and Risk Matrices.
@@ -17,13 +15,8 @@ BidBuilder AI is a full-stack application that generates comprehensive, enterpri
 * **Print-Ready UI:** Custom CSS optimized for web viewing and one-click PDF export via the browser's print engine.
 * **Context-Aware:** Adapts content based on Client Industry, Budget, Tech Preferences, and desired Tone.
 
----
+ 🏗 System Architecture
 
-## 🏗 System Architecture
-
-
-
-```mermaid
 graph TD
     User[User Input] -->|POST Request| Flask[Flask Backend]
     Flask -->|Async Dispatch| Engine[AI Workflow Engine]
